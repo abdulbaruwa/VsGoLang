@@ -5,6 +5,40 @@ grammar go;
  */
  //Types
  //Types can be named or unnamed
+ Type
+	: TypeName 
+	| TypeLiteral
+	| '(' Type ')'
+	;
+
+TypeName
+	: IDENTIFIER
+	| QUALIFIED_IDENTIFIER
+	;
+
+TypeLit
+	: ArrayType
+	| StructType
+	| PointerType
+	| FunctionType
+	| InterfaceType
+	| SliceType
+	| MapType
+	| ChannelType
+	;
+
+QUALIFIED_IDENTIFIER 
+	: PackageName '.' IDENTIFIER
+	;
+
+//Package clause
+// A package clause begins each 'go' source file
+PackageClause
+	: 'package' PackageName
+	;
+PackageName
+	: IDENTIFIER
+	;
 
 compileUnit
 	:	EOF
@@ -77,7 +111,6 @@ INT_LITERAL
 	: Decimal_literal | Octal_literal | Hex_literal
 	; 
 
-
 fragment Decimal_literal 
 	:  ('1'..'9') Decimal_digits //{ Decimal_digit }
 	;
@@ -100,6 +133,21 @@ fragment Hex_literal
 fragment Hex_digits
 	: Hex_digit+
 	;
+
+// Floating-point literals
+//#Todo
+
+//Imaginary literals
+//#Todo
+
+//Rune literals
+//#Todo
+
+//String literals
+//#Todo
+
+
+
 
 fragment Letter_character 
   : UNICODE_CLASS_LU
