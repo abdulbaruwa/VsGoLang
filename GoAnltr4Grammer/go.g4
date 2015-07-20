@@ -16,7 +16,7 @@ TypeName
 	| QUALIFIED_IDENTIFIER
 	;
 
-TypeLit
+TypeLiteral
 	: ArrayType
 	| StructType
 	| PointerType
@@ -31,7 +31,7 @@ QUALIFIED_IDENTIFIER
 	: PackageName '.' IDENTIFIER
 	;
 
-Array
+ArrayType
 	: OPEN_BRACKET ArrayLength CLOSE_BRACKET ElementType
 	;
 
@@ -66,6 +66,62 @@ Tag
 //Constant declarations
 IdentifierList 
 	: IDENTIFIER {',' IDENTIFIER }
+	;
+
+//// EXPRESSIONS
+//Operators
+Expression
+	: UnaryExpression
+	| Expression Binary_operator UnaryExpression
+	;
+
+UnaryExpression
+	: PrimaryExpression 
+	| Unary_operator UnaryExpression
+	; 
+
+Binary_operator
+	: OP_OR 
+	| OP_AND
+	| Rel_operator
+	| Add_operator
+	| Mult_operator
+	;
+
+Rel_operator
+	: OP_EQ
+	| OP_NE
+	| LT
+	| OP_LE
+	| GT
+	| OP_GE 
+	;
+
+Add_operator
+	: PLUS
+	| MINUS
+	| BITWISE_OR
+	| CARET
+	;
+
+Mult_operator
+	: STAR
+	| DIV
+	| PERCENT
+	| OP_LEFT_SHIFT
+	| OP_RIGHT_SHIFT
+	| AMP_CLARET
+	| AMP 
+	;
+
+Unary_operator
+	: PLUS
+	| MINUS
+	| BANG 
+	| CARET
+	| STAR
+	| AMP 
+	| OP_OPTIONAL
 	;
 
 //Package clause
@@ -132,7 +188,7 @@ fragment Octal_digit
 	: '0'..'7'
 	;
 
-HEXDIGIT 
+HEX_DIGIT 
 	: Hex_digit
 	;
 fragment Hex_digit
@@ -207,10 +263,10 @@ ESCAPED_CHAR
 
 //Rune literals
 Rune_literal 
-	: QUOTE (Unicode_value | BYTE_VALUE) QUOTE
+	: QUOTE (UNICODE_VALUE | BYTE_VALUE) QUOTE
 	;
 
-Unicode_Value
+UNICODE_VALUE
 	: UNICODE_CHAR
 	| LITTLE_U_VALUE
 	| BIG_U_VALUE
