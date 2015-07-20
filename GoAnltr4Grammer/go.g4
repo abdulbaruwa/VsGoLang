@@ -8,7 +8,7 @@ grammar go;
  Type
 	: TypeName 
 	| TypeLiteral
-	| '(' Type ')'
+	| OPEN_PARENS Type CLOSE_PARENS
 	;
 
 TypeName
@@ -31,11 +31,49 @@ QUALIFIED_IDENTIFIER
 	: PackageName '.' IDENTIFIER
 	;
 
+Array
+	: OPEN_BRACKET ArrayLength CLOSE_BRACKET ElementType
+	;
+
+ArrayLength 
+	:Expression
+	;
+
+ElementType
+	: Type
+	;
+
+SliceType
+	: OPEN_BRACKET CLOSE_BRACKET ElementType
+	;
+
+StructType
+	: 'struct' OPEN_BRACE { FieldDecl SEMICOLON } CLOSE_BRACE
+	;
+
+FieldDecl
+	: (IdentifierList Type | AnonymousField) [Tag]
+	;
+
+AnonymousField 
+	: ['*'] TypeName
+	;
+
+Tag
+	: Interpreted_string_literal
+	;
+
+//Constant declarations
+IdentifierList 
+	: IDENTIFIER {',' IDENTIFIER }
+	;
+
 //Package clause
 // A package clause begins each 'go' source file
 PackageClause
 	: 'package' PackageName
 	;
+
 PackageName
 	: IDENTIFIER
 	;
@@ -56,6 +94,10 @@ SINGLE_LINE_COMMENT
 	: ('//' Input_character*) -> channel(HIDDEN)
 	;
 
+UNICODE_CHAR
+	: Input_character
+	;
+
 fragment Input_characters
 	: Input_character+
 	;
@@ -74,6 +116,13 @@ DECIMALDIGIT
 fragment Decimal_digit
 	: '0'..'9' 
 	; 
+BYTE_VALUE
+	:  OCTAL_BYTE_VALUE | HEX_BYTE_VALUE
+	;
+	 
+OCTAL_BYTE_VALUE
+	: '\\' Octal_digit Octal_digit Octal_digit
+	;
 
 OCTALDIGIT
 	: Octal_digit
@@ -126,12 +175,28 @@ fragment Octal_digits
 	: Octal_digit+
 	;
 
+LITTLE_U_VALUE
+	: '\\u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+	;
+
+BIG_U_VALUE
+	: '\\U' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+	;
+
+HEX_BYTE_VALUE
+	: '\\x' HEX_DIGIT HEX_DIGIT 	
+	;
+
 fragment Hex_literal 
 	: ('0x'|'0X') Hex_digits
 	;
 
 fragment Hex_digits
 	: Hex_digit+
+	;
+
+ESCAPED_CHAR
+	: '\\' ( 'a' | 'b' | 'f' | 'n' | 'r' | 't' | 'v' | BACK_SLASH | QUOTE | DOUBLE_QUOTE )
 	;
 
 // Floating-point literals
@@ -141,12 +206,31 @@ fragment Hex_digits
 //#Todo
 
 //Rune literals
+Rune_literal 
+	: QUOTE (Unicode_value | BYTE_VALUE) QUOTE
+	;
+
+Unicode_Value
+	: UNICODE_CHAR
+	| LITTLE_U_VALUE
+	| BIG_U_VALUE
+	| ESCAPED_CHAR
+	;
+	 
 //#Todo
 
 //String literals
-//#Todo
+String_Literal
+	: Raw_string_literal | Interpreted_string_literal
+	;
 
+Raw_string_literal
+	: QUOTE { UNICODE_CHAR | NEW_LINE } QUOTE
+	;
 
+Interpreted_string_literal
+	: DOUBLE_QUOTE  { UNICODE_VALUE | BYTE_VALUE } DOUBLE_QUOTE 
+	;
 
 
 fragment Letter_character 
@@ -305,3 +389,9 @@ BITWISE_OR : '|';
 ASSIGNMENT: '=';
 OP_COLON_ASSIGN : ':=';
 BANG : '!';
+
+//Custom Lexer rules
+QUOTE :             '\'';
+DOUBLE_QUOTE :      '"';
+BACK_SLASH :        '\\';
+DOUBLE_BACK_SLASH : '\\\\';
