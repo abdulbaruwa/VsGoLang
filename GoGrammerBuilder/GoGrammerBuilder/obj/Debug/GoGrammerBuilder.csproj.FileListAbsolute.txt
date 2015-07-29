@@ -1,0 +1,6 @@
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder\bin\Debug\GoGrammerBuilder.dll
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder\bin\Debug\GoGrammerBuilder.pdb
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder\bin\Debug\Antlr4.Runtime.dll
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder\obj\Debug\GoGrammerBuilder.dll
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder\obj\Debug\GoGrammerBuilder.pdb
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder\obj\Debug\GoGrammerBuilder.csprojResolveAssemblyReference.cache

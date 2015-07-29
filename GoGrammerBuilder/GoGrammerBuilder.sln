@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoGrammerBuilder", "GoGrammerBuilder\GoGrammerBuilder.csproj", "{8DBF57A8-79AC-40F0-921E-351A12F364C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoGrammerBuilder.Specs", "GoGrammerBuilder.Specs\GoGrammerBuilder.Specs.csproj", "{2C141CA7-8416-4C42-A2EC-17B5F577B31B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AntlrRuntime", "AntlrRuntime", "{5BD7A841-7D74-4AD1-8D29-49C848AF3C71}"
+	ProjectSection(SolutionItems) = preProject
+		AntlrRuntime\Antlr4.Runtime.dll = AntlrRuntime\Antlr4.Runtime.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DBF57A8-79AC-40F0-921E-351A12F364C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DBF57A8-79AC-40F0-921E-351A12F364C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DBF57A8-79AC-40F0-921E-351A12F364C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DBF57A8-79AC-40F0-921E-351A12F364C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C141CA7-8416-4C42-A2EC-17B5F577B31B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C141CA7-8416-4C42-A2EC-17B5F577B31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C141CA7-8416-4C42-A2EC-17B5F577B31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C141CA7-8416-4C42-A2EC-17B5F577B31B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

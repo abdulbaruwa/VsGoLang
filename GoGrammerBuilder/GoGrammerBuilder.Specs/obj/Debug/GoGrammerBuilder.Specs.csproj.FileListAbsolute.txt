@@ -1,0 +1,9 @@
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\obj\Debug\GoGrammerBuilder.Specs.csprojResolveAssemblyReference.cache
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\bin\Debug\GoGrammerBuilder.Specs.dll
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\bin\Debug\GoGrammerBuilder.Specs.pdb
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\bin\Debug\Antlr4.Runtime.dll
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\bin\Debug\GoGrammerBuilder.dll
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\bin\Debug\GoGrammerBuilder.pdb
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\obj\Debug\GoGrammerBuilder.Specs.dll
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\obj\Debug\GoGrammerBuilder.Specs.pdb
+C:\Development\OnGithub\VsGoLang\GoGrammerBuilder\GoGrammerBuilder.Specs\bin\Debug\LexerSpecs\basicTypes.go
